@@ -1,0 +1,106 @@
+# d
+
+```sql
+
+-- EMPRESA: COMERCIALIZADORA TOPIK SA DE CV
+
+-- PERFIL TRANSACCIONAL
+-- Risk score: 5
+-- Outbound transactions:
+
+-- Per transaction: $7,000 CAD
+-- Daily: $10,000 CAD
+-- Monthly: $16,667 CAD
+
+
+INSERT INTO public.companies (
+    id_company, country_id, company_type_id, company_name, registration_number, legal_representative, kyb_status, phone_number, email, state, city,
+    address_line_1, address_line_2, zip_code, country_risk, verification_status, active, created_in_manigo, deleted_at, created_at, modified_at, state_iso ) 
+    VALUES (
+    nextval('companies_id_company_seq'::regclass), 240, 7, 'COMERCIALIZADORA TOPIK SA DE CV', 'CTO210813AM5', '', 'completed/GREEN', '+526142472438', 'comercializadora.topik@outlook.com', 'PUEBLA', 'SAN PEDRO CHOLULA',
+    'CALLE 12 ORIENTE, NÚMERO 603, INTERIOR 06', '06', '77024', 5, 0, true, true, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'PUE'
+);
+
+
+INSERT INTO public.companies_manigo_relations (
+    id_company_relation, company_id_banpay, company_id_manigo, type_of_business_verification_status, external_company_id, external_user_id,
+    external_group_id, deleted_at, created_at, modified_at, client_manigo_id
+) VALUES (
+    nextval('companies_manigo_relations_id_company_relation_seq'::regclass), currval('companies_id_company_seq'::regclass), 0, '1', 'acct_J0Jj3ijKNoyefGwAOgaYjA', 'acct_J0Jj3ijKNoyefGwAOgaYjA',
+    NULL, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 5
+);
+
+
+INSERT INTO public.banpay_accounts (
+    id_banpay_account, company_id, banpay_account_type_id, status, external_id, created_at, modified_at, deleted_at
+) VALUES (
+    nextval('banpay_accounts_id_banpay_account_seq'::regclass), currval('companies_id_company_seq'::regclass), 1, 1, uuid_generate_v4(), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL
+);
+
+
+INSERT INTO public.users (
+    id_user, company_id, country_id, first_name, last_name, phone_number, terms_and_conditions, privacy_policy, kyc, services_contract, newsletter, birthdate, status, verified_email, user_type_id, working_position, deleted_at, created_at, modified_at, "owner", ext_id_user, country_risk, role_id, banpay_account_id, lead_id
+) VALUES (
+    nextval('users_id_user_seq'::regclass), currval('companies_id_company_seq'::regclass), 139, 'ELISA', 'JIMENEZ BACILIO', '+522441054986', true, true, 'completed/GREEN', false, false, NULL, 1, true, 2, 'Business Admin', NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, true, uuid_generate_v4(), 5, 1, currval('banpay_accounts_id_banpay_account_seq'::regclass), '{#TODO:lead_id}'
+);
+
+INSERT INTO public.users_info (
+    id_user_info, user_id, state, city, address_line_1, address_line_2, zip_code, state_iso
+) VALUES (
+    nextval('users_info_id_user_info_seq'::regclass), currval('users_id_user_seq'::regclass), '', 'PUEBLA', 'CALLE MAGNOLIAS NUMERO 6 FRACCIONAMIENTO VALLE REAL', '', '74367', 'PUE'
+);
+
+
+INSERT INTO public.users_manigo_relations (
+    id_user_relation, user_id_banpay, user_id_manigo, client_id, external_user_id, deleted_at, created_at, modified_at, member_id, ext_member_id, ext_account_id, ext_contact_id
+) VALUES (
+    nextval('users_manigo_relations_id_user_relation_seq'::regclass), currval('users_id_user_seq'::regclass), NULL, 5, 'acct_J0Jj3ijKNoyefGwAOgaYjA', NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, NULL, 'acct_J0Jj3ijKNoyefGwAOgaYjA', 'acct_J0Jj3ijKNoyefGwAOgaYjA'
+);
+
+INSERT INTO public.user_sessions (
+    id_user_session, user_id, email, "password", deleted_at, created_at, modified_at, mfa_device_name, mfa_last_updated, has_mfa_mobile, has_mfa_business_app
+) VALUES (
+    nextval('user_sessions_id_user_session_seq'::regclass), currval('users_id_user_seq'::regclass), 'serviciosadmonycontrol@grupontemx.com', '{#TODO:password}', NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, NULL, false, false
+);
+```
+
+```js
+
+profile_doc = {
+    profile: "COMERCIALIZADORA TOPIK SA DE CV",
+    max_txn_per_day: 10,
+    max_amount_per_day: 10000,
+    min_time_between_txn: 1,
+    currency: ["CAD", "USD", "EUR", "MXN", "GBP"],
+    specified_income: 16667,
+    max_score_kyt: 30,
+    max_txn_same_amount: 5,
+    max_txn_consecutive: 5,
+    max_consecutive_amount: 5,
+    min_consecutive_amount: 10,
+    max_days_inactive: 90,
+    max_amount_per_txn: 7000,
+    created_at: new Date(),
+    updated_at: new Date()
+};
+result_transfer_rules = db.TransferRules.insertOne(profile_doc);
+
+inserted_id_str = result_transfer_rules.insertedId.toString();
+
+db.UsersProfileRules.insertOne({
+    user_id: 378,
+    username: "ELISA JIMENEZ BACILIO",
+    email: "comercializadora.topik@outlook.com",
+    profile_id: inserted_id_str,
+    company_id: 335
+});
+
+db.UserProfiles.insertOne({
+    "IdUserBanpay": 378,
+    "UserNickname": "",
+    "UserPin": "",
+    "UserAvatar": "",
+    "FavoriteCurrency": "CAD",
+    "FavoriteTimezone": "America/Vancouver (PDT)"
+});
+```

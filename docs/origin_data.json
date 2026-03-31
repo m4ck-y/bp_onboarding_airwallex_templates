@@ -1,0 +1,14 @@
+{
+    "sumsub":{
+    },
+    "lead":{
+        "external_sumsub_id": "a790c509-519b-4467-8175-d42b7a2aadc1"
+    },
+    "perfil_transaccional":{
+        "risk_score": 5,
+        "outbound transactions": {
+            "per_transaction": 1000,
+        },
+
+    }
+}
