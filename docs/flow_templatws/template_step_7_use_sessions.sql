@@ -1,9 +1,3 @@
-/*
- * ==============================================
- * Step 7: Insert User Sessions
- * ==============================================
- */
-
 INSERT INTO public.user_sessions (
     id_user_session,
     user_id,

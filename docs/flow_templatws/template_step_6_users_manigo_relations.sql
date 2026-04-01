@@ -1,9 +1,3 @@
-/*
- * =====================================================
- * Step 6: Insert Users Manigo Relations
- * =====================================================
- */
-
 INSERT INTO public.users_manigo_relations (
     id_user_relation,
     user_id_banpay,

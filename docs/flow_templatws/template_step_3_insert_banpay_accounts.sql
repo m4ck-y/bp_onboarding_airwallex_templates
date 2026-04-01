@@ -1,8 +1,3 @@
-/*
- * ================================================
- * Step 3: Insert Banpay Accounts
- * ================================================
- */
 
 INSERT INTO public.banpay_accounts (
     id_banpay_account,

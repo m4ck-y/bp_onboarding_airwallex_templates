@@ -1,4 +1,3 @@
-/* 30 - MARZO - 2026 */
 profile_doc = {
     profile: "COMERCIALIZADORA TOPIK SA DE CV",
     max_txn_per_day: 10,
@@ -29,11 +28,6 @@ db.UsersProfileRules.insertOne({
 });
 
 
-
-
-
-/* 30 - MARZO - 2026 */
-/* BEATNORTH LLC */
 db.UserProfiles.insertOne({
     "IdUserBanpay": 378,
     "UserNickname": "",

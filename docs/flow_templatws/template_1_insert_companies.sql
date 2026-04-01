@@ -1,9 +1,3 @@
-/*
- * ===========================================
- * Step 1: Insert Company - BEATNORTH LLC
- * ===========================================
- */
-
 INSERT INTO public.companies (
     id_company,
     country_id,

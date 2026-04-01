@@ -1,9 +1,3 @@
-/*
- * =================================================
- * Step 2: Insert Companies Manigo Relations
- * =================================================
- */
-
 INSERT INTO public.companies_manigo_relations (
     id_company_relation,
     company_id_banpay,

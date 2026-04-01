@@ -1,9 +1,3 @@
-/*
- * ==========================================
- * Step 4: Insert Users
- * ==========================================
- */
-
 INSERT INTO public.users (
     id_user,
     company_id,

@@ -1,9 +1,3 @@
-/*
- * ================================================
- * Step 5: Insert Users Info
- * ================================================
- */
-
 INSERT INTO public.users_info (
     id_user_info,
     user_id,
