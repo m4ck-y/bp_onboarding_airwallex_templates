@@ -6,7 +6,7 @@ Instructions for AI agents working with this documentation structure.
 ## Directory Structure
 
 ### reference_flow/
-Contains complete onboarding flow examples used as template sources.
+Contains complete onboarding flow examples used as validation reference.
 
 **Action**: Always create `README.md` explaining:
 - Purpose of the folder
@@ -15,13 +15,13 @@ Contains complete onboarding flow examples used as template sources.
 - Related folders
 
 ### onboarding_templates/
-Reusable SQL and MongoDB templates for company onboarding.
+Reference templates showing SQL/MongoDB structure. Historical examples; actual generation uses Pydantic schemas.
 
 **Action**: Always create `README.md` explaining:
 - Purpose of the folder
-- Execution order (numerical)
-- Template variables and placeholders
-- Dependencies (sequences, collections)
+- Template files (reference only)
+- Schema structure
+- Usage with generator
 - Related folders
 
 ### completed_onboardings/
@@ -33,6 +33,12 @@ Real onboarding flows executed for actual companies.
 - Usage guidelines
 - Related folders
 
+## Current Generation Method
+
+**Primary**: `app/scripts/generator.py` - Generates scripts from Pydantic schemas
+**Schemas**: `app/schemas/` - Pydantic models for data validation
+**Tests**: `tests/beatnorth.py` - Example usage with real data
+
 ## README.md Requirements
 
 All README.md files MUST:
@@ -41,6 +47,7 @@ All README.md files MUST:
 - Include: Purpose, Content/Structure, Usage, Related sections
 - Use clear headers and bullet points
 - Avoid unnecessary human-oriented explanations
+- Reference the generator and schemas when applicable
 
 ## File Naming
 
@@ -56,3 +63,4 @@ All README.md files MUST:
 2. Create README.md following the template above
 3. Update this AGENTS.md if new patterns emerge
 4. Keep documentation minimal and AI-focused
+5. Reference the generator and schemas when applicable

@@ -13,12 +13,19 @@ Format: `YYYY_MM_DD_COMPANY_NAME.md`
 - `DD` - Day (2 digits)
 - `COMPANY_NAME` - Company name in UPPERCASE with underscores
 
+## Current Generation Method
+**Primary**: `app/scripts/generator.py` - Generates scripts from Pydantic schemas
+**Schemas**: `app/schemas/` - Pydantic models for data validation
+**Tests**: `tests/beatnorth.py` - Example usage with real data
+
 ## Usage
 Reference for:
 - Understanding real onboarding data patterns
 - Debugging onboarding issues
-- Creating new templates based on successful onboardings
+- Creating new schemas based on successful onboardings
 
 ## Related
-- Templates: `../onboarding_templates/`
-- Reference flow: `../reference_flow/`
+- Generator: `../../app/scripts/generator.py`
+- Schemas: `../../app/schemas/`
+- Tests: `../../tests/beatnorth.py`
+- Reference: `../reference_flow/perfil_transaccional.md`
