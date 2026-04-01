@@ -4,7 +4,7 @@ from app.schemas.airwallex_onboarding import schema_airwallex_onboarding
 COMPANY_TYPE_ID = 7
 
 DB_INITIAL_USER_ID = 376
-DB_INITIAL_COMPANY_ID = 334
+DB_INITIAL_COMPANY_ID = 333
 
 DB_NEXT_USER_ID = DB_INITIAL_USER_ID + 1
 DB_NEXT_COMPANY_ID = DB_INITIAL_COMPANY_ID + 1
@@ -91,7 +91,7 @@ profile_doc = {{
     max_amount_per_day: {payload.support_info.outbound_transactions.daily},
     min_time_between_txn: 1,
     currency: ["CAD", "USD", "EUR", "MXN", "GBP"],
-    specified_income: {payload.support_info.outbound_transactions.monthly}
+    specified_income: {payload.support_info.outbound_transactions.monthly},
     max_score_kyt: 30,
     max_txn_same_amount: 5,
     max_txn_consecutive: 5,

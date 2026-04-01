@@ -8,5 +8,6 @@ class schema_outbound(BaseModel):
     #currency
 
 class schema_support_info(BaseModel):
+    #datetime
     risk_score: int
     outbound_transactions: schema_outbound

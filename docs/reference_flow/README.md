@@ -9,7 +9,17 @@ Complete onboarding flow example used as validation reference. Contains all SQL 
 ## Current Generation Method
 **Primary**: `app/scripts/generator.py` - Generates scripts from Pydantic schemas
 **Schemas**: `app/schemas/` - Pydantic models for data validation
-**Tests**: `tests/beatnorth.py` - Example usage with real data
+**Production Script**: `scripts/generate_onboarding.py` - Generates real BD scripts
+**Test Script**: `tests/BEATNORTH_LLC_original.py` - Validates against reference
+
+## Quick Commands
+```bash
+# Generate real BD scripts (output: data/)
+python scripts/generate_onboarding.py
+
+# Validate against reference (output: tests/)
+python -m tests.BEATNORTH_LLC_original
+```
 
 ## Usage
 Use this as reference to validate generated scripts. Compare output from `generate_scripts_db()` with this file to ensure correctness.
@@ -30,5 +40,6 @@ assert normalize(generated) == normalize(reference)
 ## Related
 - Generator: `../../app/scripts/generator.py`
 - Schemas: `../../app/schemas/`
-- Tests: `../../tests/beatnorth.py`
+- Production: `../../scripts/generate_onboarding.py`
+- Tests: `../../tests/BEATNORTH_LLC_original.py`
 - Templates: `../onboarding_templates/`

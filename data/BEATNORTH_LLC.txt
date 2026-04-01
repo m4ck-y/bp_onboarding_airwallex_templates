@@ -1,4 +1,5 @@
 
+
 INSERT INTO public.companies(
     id_company, country_id, company_type_id, company_name, registration_number,
     legal_representative, kyb_status, phone_number, email, state,
@@ -6,19 +7,19 @@ INSERT INTO public.companies(
     verification_status, active, created_in_manigo, deleted_at, created_at,
     modified_at, state_iso)
 VALUES(
-    nextval('companies_id_company_seq'::regclass), 240, 7, 'BEATNORTH LLC', '384385483',
+    nextval('companies_id_company_seq'::regclass), { #TODO:country_id.UNITED STATES OF AMERICA}, 7, 'BEATNORTH LLC', '384385483',
     '', 'completed/GREEN', '+525580008233', 'serviciosadmonycontrol@grupontemx.com', 'TEXAS',
-    'HOUSTON','8588 KATY FREEWAY SUITE 435', '', '77024', 9,
+    'HOUSTON', '8588 KATY FREEWAY SUITE 435', '', '77024', 9,
     0, true, true, NULL, CURRENT_TIMESTAMP,
-    CURRENT_TIMESTAMP, 'TX');
+    CURRENT_TIMESTAMP, '{ #TODO:state_iso.TEXAS}');
 
 INSERT INTO public.companies_manigo_relations(
     id_company_relation, company_id_banpay, company_id_manigo, type_of_business_verification_status, external_company_id,
     external_user_id, external_group_id, deleted_at, created_at, modified_at,
     client_manigo_id)
 VALUES(
-    nextval('companies_manigo_relations_id_company_relation_seq'::regclass), currval('companies_id_company_seq'::regclass), 0, '1', 'acct_hV_DwqCVOrOk6aSzdz_WMA',
-    'acct_hV_DwqCVOrOk6aSzdz_WMA', NULL, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,
+    nextval('companies_manigo_relations_id_company_relation_seq'::regclass), currval('companies_id_company_seq'::regclass), 0, '1', '{ #TODO:airwallex.BEATNORTH LLC}',
+    '{ #TODO:airwallex.BEATNORTH LLC}', NULL, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,
     5);
 
 INSERT INTO public.banpay_accounts(
@@ -35,7 +36,7 @@ INSERT INTO public.users(
     working_position, deleted_at, created_at, modified_at, "owner",
     ext_id_user, country_risk, role_id, banpay_account_id, lead_id)
 VALUES(
-    nextval('users_id_user_seq'::regclass), currval('companies_id_company_seq'::regclass), 139, 'JESUS', 'GOMEZ MARTINEZ',
+    nextval('users_id_user_seq'::regclass), currval('companies_id_company_seq'::regclass), { #TODO:country_id.MEXICO}, 'JESUS', 'GOMEZ MARTINEZ',
     '+525543677677', true, true, 'completed/GREEN', false,
     false, NULL, 1, true, 2,
     'Business Admin', NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, true,
@@ -46,16 +47,16 @@ INSERT INTO public.users_info(
     id_user_info, user_id, state, city, address_line_1,
     address_line_2, zip_code, state_iso)
 VALUES(
-    nextval('users_info_id_user_info_seq'::regclass), currval('users_id_user_seq'::regclass), 'CIUDAD DE MEXICO', 'CIUDAD DE MEXICO', 'JAVIER BARROS SIERRA #540',
-    '', '01210', 'CME');
+    nextval('users_info_id_user_info_seq'::regclass), currval('users_id_user_seq'::regclass), 'CIUDAD DE MEXICO', 'CIUDAD DE MEXICO', 'JAVIER BARROS SIERRA 540',
+    'PISO 5, OFICINA 5021', '01210', '{ #TODO:state_iso.CIUDAD DE MEXICO}');
 
 INSERT INTO public.users_manigo_relations(
     id_user_relation, user_id_banpay, user_id_manigo, client_id, external_user_id, deleted_at,
     created_at, modified_at, member_id, ext_member_id, ext_account_id, ext_contact_id
 )
 VALUES(
-    nextval('users_manigo_relations_id_user_relation_seq'::regclass), currval('users_id_user_seq'::regclass), NULL, 5, 'acct_hV_DwqCVOrOk6aSzdz_WMA', NULL,
-    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, NULL, 'acct_hV_DwqCVOrOk6aSzdz_WMA', 'acct_hV_DwqCVOrOk6aSzdz_WMA');
+    nextval('users_manigo_relations_id_user_relation_seq'::regclass), currval('users_id_user_seq'::regclass), NULL, 5, '{ #TODO:airwallex.BEATNORTH LLC}', NULL,
+    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, NULL, '{ #TODO:airwallex.BEATNORTH LLC}', '{ #TODO:airwallex.BEATNORTH LLC}');
 
 INSERT INTO public.user_sessions(
     id_user_session, user_id, email, "password", deleted_at,
@@ -63,7 +64,7 @@ INSERT INTO public.user_sessions(
     has_mfa_business_app
 )
 VALUES(
-    nextval('user_sessions_id_user_session_seq'::regclass), currval('users_id_user_seq'::regclass), 'serviciosadmonycontrol@grupontemx.com', '$2b$12$MyiF5Quj8F94jnx0AJbvaOyIq0K.kByAI61WqUC3wH1cIIsFotkDS', NULL,
+    nextval('user_sessions_id_user_session_seq'::regclass), currval('users_id_user_seq'::regclass), 'serviciosadmonycontrol@grupontemx.com', '#TODO:mongo.password', NULL,
     CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, NULL, NULL, false, 
     false
 );
